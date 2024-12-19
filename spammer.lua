@@ -1,11 +1,14 @@
-local delay = 1
+-- CHAT SPAMMER --
+local enableSpammer = false;
+local delay = 1;
 local messages = {
     "dsc.gg/drexware on top ",
     "Created by drexxy!!",
     "drexware.gg on top (add drexxy for 1d free trial)",
     "Squirrel is gay",
 }
--- Modify these messages above for chat spammer!
+
+-- END--
 
 
 
@@ -41,16 +44,18 @@ local messages = {
 
 local last_sent = 0
 
-
+-- Rage features --
 local function spamChat()
-    local current_time = globals.CurTime()
+    if enableSpammer then
+        local current_time = globals.CurTime()
 
 
-    if current_time - last_sent >= delay then
+        if current_time - last_sent >= delay then
 
-        local random_message = messages[math.random(#messages)]
-        client.ChatSay(random_message)
-        last_sent = current_time
+            local random_message = messages[math.random(#messages)]
+            client.ChatSay(random_message)
+            last_sent = current_time
+        end    
     end
 end
 
